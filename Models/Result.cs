@@ -15,13 +15,13 @@ public partial class Result
 
     public DateOnly? SetDate { get; set; }
 
-    public int? Grade_Percentage { get; set; }
+    public byte? Grade_Percentage { get; set; }
 
     public virtual Course? FkCourse { get; set; }
-
-    public virtual Grade? FkGradeNavigation { get; set; }
 
     public virtual Staff? FkStaff { get; set; }
 
     public virtual Student? FkStudent { get; set; }
+
+    public virtual Grade? FkGradeNavigation { get; set; }
 }

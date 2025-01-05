@@ -35,7 +35,7 @@ namespace SQL_Lab3
                             ShowClassMenu();
                             break;
                         case 4:
-                            RetrieveData.GetCourses();
+                            CourseMenu();
                             break;
                         case 5:
                             RetrieveData.GetResults_thisMonth();
@@ -226,6 +226,44 @@ namespace SQL_Lab3
             }
 
         }
+
+        public static void CourseMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Course Menu:");
+            foreach (var option in MenuText.CoursesMenuText.Keys)
+            {
+                Console.WriteLine(option);
+            }
+            Console.Write("Choose an option: ");
+
+            if (int.TryParse(Console.ReadLine(), out int input))
+            {
+                switch (input)
+                {
+                    case 1:
+                        RetrieveData.GetCourses();
+                        break;
+                    case 2:
+                        RetrieveData.GetActiveCourses();
+                        break;
+                    case 0:
+                        MainMenu();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
+                }
+
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Invalid input, please enter a number.");
+            }
+        }
+
+
     }
 
 }

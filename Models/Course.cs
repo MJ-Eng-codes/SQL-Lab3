@@ -9,5 +9,7 @@ public partial class Course
 
     public string? CourseName { get; set; }
 
+    public string? Status { get; set; }
+
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 }

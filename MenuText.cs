@@ -32,7 +32,11 @@ namespace SQL_Lab3
             AddStudent,
 
             // Class Menu.
-            ClassMenu
+            ClassMenu,
+
+            //Course Menu
+            AllCourses,
+            ActiceCourses
         }
 
         // Main Menu Options.
@@ -70,6 +74,14 @@ namespace SQL_Lab3
         public static readonly Dictionary<string, MenuChoice> ClassMenuText = new()
     {
         {"1: Show class and respective students", MenuChoice.ClassMenu},
+        {"0: Return to MainMenu", MenuChoice.Return }
+    };
+
+        // Courses Menu Options.
+        public static readonly Dictionary<string, MenuChoice> CoursesMenuText = new()
+    {
+        {"1: Show all courses", MenuChoice.AllCourses},
+        {"2. Show all Active courses", MenuChoice.ActiceCourses},
         {"0: Return to MainMenu", MenuChoice.Return }
     };
     }

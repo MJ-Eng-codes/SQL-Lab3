@@ -15,7 +15,7 @@ namespace SQL_Lab3.TableManager
         public static void AddStudent()
         {
           
-            using (SchoolContext context = new SchoolContext())
+            using (SQL_Lab3.Data.SchoolContext context = new SQL_Lab3.Data.SchoolContext())
             {
                 // Gather student information
                 Console.WriteLine("Enter student first name:");
@@ -53,7 +53,7 @@ namespace SQL_Lab3.TableManager
         //Lägga till ny personal, mata in uppgifter om en ny anställd och data sparas i DB
         public static void AddStaff()
         {
-            using (SchoolContext context = new SchoolContext())
+            using (SQL_Lab3.Data.SchoolContext context = new SQL_Lab3.Data.SchoolContext())
             {
                 // Gather student information
                 Console.WriteLine("Enter staff first name:");

@@ -9,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace SQL_Lab3.TableManager
 {
-
-
-
     public static class RetrieveData
     {
        /* private static SchoolContext context = new SchoolContext()*/ //Not recommended way, cuz takes too much memory
@@ -19,7 +16,7 @@ namespace SQL_Lab3.TableManager
         //Hämta personal (användare kan välja se alla eller kolla department)
         public static void GetAllStaff()
         {
-            using (SchoolContext context = new SchoolContext())
+            using (SQL_Lab3.Data.SchoolContext context = new SQL_Lab3.Data.SchoolContext())
             {
                 var Staffs = context.Staffs
                     .Join(context.Departments, staff => staff.FkDepartmentId,
@@ -42,7 +39,7 @@ namespace SQL_Lab3.TableManager
         } //Done
         public static void GetStaff_Department (string departmentName) //Department filter
         {
-            using (SchoolContext context = new SchoolContext())
+            using (SQL_Lab3.Data.SchoolContext context = new SQL_Lab3.Data.SchoolContext())
             {
 
                 ////Show Existing Departments
@@ -78,7 +75,7 @@ namespace SQL_Lab3.TableManager
         //Hämta alla elever (får välja för/efternamn, asc/desc)       
         public static void GetStudents(string orderBy, bool ascending)
         {
-            using (SchoolContext context = new SchoolContext())
+            using (SQL_Lab3.Data.SchoolContext context = new SQL_Lab3.Data.SchoolContext())
             {
                 IQueryable<Student> Students = context.Students;
 
@@ -101,7 +98,7 @@ namespace SQL_Lab3.TableManager
         //Hämta alla elever beror på klass (visa klass först)
         public static void GetStudent_Class(string className)
         {
-            using (SchoolContext context = new SchoolContext())
+            using (SQL_Lab3.Data.SchoolContext context = new SQL_Lab3.Data.SchoolContext())
             {
                 ////show classes list
                 //var Class = context.ClassTs
@@ -155,7 +152,7 @@ namespace SQL_Lab3.TableManager
 
         public static void GetResults_thisMonth()
         {
-            using (SchoolContext context = new SchoolContext())
+            using (SQL_Lab3.Data.SchoolContext context = new SQL_Lab3.Data.SchoolContext())
             {
                 var Result = from result in context.Results
                              join enrollment in context.Enrollments
@@ -184,7 +181,7 @@ namespace SQL_Lab3.TableManager
         //Hämta en lista med alla kurser och det snittbetyg som elev fick 
         public static void GetCourses()
         {
-            using (SchoolContext context = new SchoolContext())
+            using (SQL_Lab3.Data.SchoolContext context = new SQL_Lab3.Data.SchoolContext())
             {
                 var Courses =
                     from courses in context.Courses
@@ -216,6 +213,24 @@ namespace SQL_Lab3.TableManager
             }
         } //Done
 
+        public static void GetActiveCourses()
+        {
+            using (SQL_Lab3.Data.SchoolContext context = new SQL_Lab3.Data.SchoolContext())
+            {
+                var activeCourses =
+                    from course in context.Courses
+                    where course.Status == "Active"
+                    select course;
+
+                foreach (var course in activeCourses)
+                {
+                    Console.WriteLine($"Course ID: {course.CourseId}, Course Name: {course.CourseName}");
+
+                }
+
+            }
+
+        }
 
     }
 }

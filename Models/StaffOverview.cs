@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 namespace SQL_Lab3.Models;
 
-public partial class Staff
+public partial class StaffOverview
 {
-    public int StaffId { get; set; }
-
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
@@ -15,13 +13,11 @@ public partial class Staff
 
     public byte? FkDepartmentId { get; set; }
 
-    public int? FkCourseId { get; set; }
+    public int StaffId { get; set; }
 
     public DateOnly? StartDate { get; set; }
 
     public decimal? Salary { get; set; }
 
-    public virtual Course? FkCourse { get; set; }
-
-    public virtual Department? FkDepartment { get; set; }
+    public string? DepartmentName { get; set; }
 }
